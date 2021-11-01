@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SimplePage extends StatelessWidget {
-  final SimpleController testController = Get.put(SimpleController());
-
   @override
   Widget build(BuildContext context) {
+    final SimpleController testController = Get.put(SimpleController());
     return Scaffold(
       appBar: AppBar(),
       body: Center(

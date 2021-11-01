@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RootPageInWidget extends StatelessWidget {
-  final controller = Get.put(RootPageInWidgetController());
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(RootPageInWidgetController());
     return Scaffold(
       appBar: AppBar(),
       body: Obx(
@@ -73,11 +72,14 @@ class RootPageInWidgetStatatefulState extends State<RootPageInWidgetStateful> {
 }
 
 class InWidgetA extends StatelessWidget {
-  final controller = Get.put(InWidgetAController());
-
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Text(controller.text.value));
+    return GetX<InWidgetAController>(
+      init: InWidgetAController(),
+      builder: (controller) {
+        return Text(controller.text.value);
+      },
+    );
   }
 }
 
@@ -101,23 +103,20 @@ class InWidgetAController extends GetxController {
   @override
   void onClose() {
     print('A onClose');
-    text.value = 'onClose';
     super.onClose();
   }
 
   @override
   void dispose() {
     print('A dispose');
-    text.value = 'dispose';
     super.dispose();
   }
 }
 
 class InWidgetB extends StatelessWidget {
-  final controller = Get.put(InWidgetBController());
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(InWidgetBController());
     return Obx(() => Text(controller.text.value));
   }
 }

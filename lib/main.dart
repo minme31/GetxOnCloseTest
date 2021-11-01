@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_onclose_test/extends_page.dart';
+import 'package:getx_onclose_test/nested/root_page.dart';
 import 'package:getx_onclose_test/root_page_in_widget.dart';
 import 'package:getx_onclose_test/simple_page.dart';
 
@@ -67,6 +68,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Get.to(() => ExtendsPageA());
               },
               child: Text('Extends Page in Widget'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => RootPage(), binding: RootPageBinding());
+              },
+              child: Text('NestNavigatorPage in Widget'),
             ),
           ],
         ),
